@@ -1,0 +1,18 @@
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE NOT NULL,
+    age INT,
+    signup_date DATE
+);
+
+CREATE TABLE bank_accounts (
+    id SERIAL PRIMARY KEY,
+    user_id INT,
+    account_number VARCHAR(50),
+    email VARCHAR(100),
+    address TEXT,
+    balance DECIMAL(10, 2),
+    debt DECIMAL(10, 2),
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
